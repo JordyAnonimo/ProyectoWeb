@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Prueba</title>
+    <script>
+        // Función para evitar que se ingresen números en el campo de nombre
+        function soloLetras(event) {
+            const tecla = event.key;
+            // Permitir letras, tildes, espacios y "Ñ/ñ"
+            const regex = /^[A-Za-zÁáÉéÍíÓóÚúÑñ\s]+$/;
+            if (!regex.test(tecla)) {
+                event.preventDefault(); // Bloquear la tecla si no es una letra válida
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Formulario de Usuario</h1>
+    <form action="#">
+        <!-- TAREA #1: Comprobar nombre -->
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" onkeypress="soloLetras(event)" required>
+        <small>Solo letras, sin números.</small><br><br>
+
+        <!-- TAREA #2: Comprobar edad -->
+        <label for="edad">Edad:</label>
+        <input type="number" id="edad" name="edad" min="1" max="80" required>
+        <small>Edad entre 1 y 80 años.</small><br><br>
+
+        <!-- TAREA #3: Comprobar contraseña -->
+        <label for="contraseña">Contraseña:</label>
+        <input type="password" id="contraseña" name="contraseña" minlength="6" maxlength="12" required>
+        <small>La contraseña debe tener entre 6 y 12 caracteres.</small><br><br>
+
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>
